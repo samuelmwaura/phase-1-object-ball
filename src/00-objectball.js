@@ -137,8 +137,6 @@ for (const gameProperty in gameObj){ // for each of the two first level keys of 
 }
 
 }
-
-
 //console.log(`This is the number of points for this player:${numPointsScored("Bismak Biyombo")}`);
 
 //Function 2
@@ -153,5 +151,35 @@ if(player === playerName){
 return players[player].shoe;
 }}}}
 }
-
 //console.log(`This is the player shoe size:${shoeSize("Jason Terry")}`);
+
+
+//Funtion 3
+function teamcolors(teamName){
+const gameObj = gameObject();
+for(const gameProperty in gameObj){
+let team = gameObj[gameProperty];
+for(const teamProperty in team){
+  if(team[teamProperty] === teamName){
+  return team.colors;
+  }
+}
+}
+}
+// console.log(`The colors of the given team are: ${teamcolors("Brooklyn Nets")}`);
+// console.log(typeof teamcolors("Brooklyn Nets"));
+
+//Function 4
+function teamNames(){
+  const gameObj = gameObject();
+  let teamNames =  [];
+  for(const gameProperty in gameObj){  // for both the away and home
+  let team = gameObj[gameProperty];
+  for(const teamProperty in team){ // for every team name.
+    teamNames.push(team.teamName);
+    break;  // to stop adding the teamName thrice after iterating through the whole array.
+  }
+  }
+  return teamNames;  //Returning the array of team teamNames.
+}
+console.log(teamNames());
