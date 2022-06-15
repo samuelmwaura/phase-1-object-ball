@@ -121,14 +121,14 @@ const gameObject =()=>{
 //function 1
 function numPointsScored(playerName){
 const gameObj = gameObject();
-for (let key in gameObj){ // for each of the two first level keys of the game 0bject.
-  let team = gameObj[key];
-  for(let key in team){  // for each of the team properties pproperties of the teams in the object
+for (const gameProperty in gameObj){ // for each of the two first level keys of the game 0bject.
+  let team = gameObj[gameProperty];
+  for(const teamProperty in team){  // for each of the team properties pproperties of the teams in the object
     let players = team.players;   // set the value to the value of the players key which is the object containing players.
-    for(let key in players){   //for each of the players in the player object.
-      let singlePlayer = players[key];
-      console.log(key ,singlePlayer);
-      if(key=== playerName){     //if the name of the player is similar to that of the passed in name.
+    for(const player in players){   //for each of the players in the player object.
+      let singlePlayer = players[player];
+      console.log(playerProperty ,singlePlayer);
+      if(player === playerName){     //if the name of the player is similar to that of the passed in name.
       debugger;
       return singlePlayer.points;  // nb: The code iterators will stop at this line thus worry of the code execution after the result is found.
       }
@@ -139,6 +139,19 @@ for (let key in gameObj){ // for each of the two first level keys of the game 0b
 }
 
 
-console.log(`This is the number of points for this player:${numPointsScored("Bismak Biyombo")}`);
+//console.log(`This is the number of points for this player:${numPointsScored("Bismak Biyombo")}`);
 
+//Function 2
+function shoeSize(playerName){
+const gameObj = gameObject();
+for(const gameProperty in gameObj){
+let team = gameObj[gameProperty];
+for(const teamProperty in team){
+let players = team.players;
+for(const player in players){
+if(player === playerName){
+return players[player].shoe;
+}}}}
+}
 
+//console.log(`This is the player shoe size:${shoeSize("Jason Terry")}`);
