@@ -182,4 +182,66 @@ function teamNames(){
   }
   return teamNames;  //Returning the array of team teamNames.
 }
-console.log(teamNames());
+//console.log(teamNames());
+
+//function 5
+const playerNumbers = (teamName)=>{
+  const gameObj = gameObject();               //The original element.
+  let teamJerseys =  [];                      //an empty array to hold the numbers.
+  for(const gameProperty in gameObj){         //For either of the two property in the outer object.
+    let team = gameObj[gameProperty];          //
+    for(const teamProperty in team){ 
+      if (team[teamProperty] === teamName){
+        let players = team.players;
+        for(const player in players){
+         teamJerseys.push(players[player].number);
+        }
+      }
+      }
+  }
+return teamJerseys;
+}
+
+//console.log(playerNumbers('Charlotte Hornets'));
+
+//function 6
+const playerStats=(playerName)=>{
+ const gameObj = gameObject();
+ for(const gameProperty in gameObj){
+ const team = gameObj[gameProperty];
+ for(const teamProperty in team){
+   let players = team.players;
+   for(const player in players){
+     if(player === playerName){
+      return players[player];
+     }
+    
+   }
+ }
+ }
+}
+
+//console.log(playerStats('DeSagna Diop'));
+
+//function 7
+const bigShoeRebounds =()=>{
+const gameObj = gameObject();
+let largestShoe = 0;
+let largestShoeOwner = {}
+for(const gameProperty in gameObj){
+  let team = gameObj[gameProperty];
+for(const teamProperty in team){
+ let players = team.players;
+ for(const player in players){
+  if(players[player].shoe > largestShoe){
+    largestShoe = players[player].shoe
+    largestShoeOwner = players[player];
+  }
+ }
+}
+}
+console.log(largestShoeOwner);
+return largestShoeOwner.rebounds
+}
+
+console.log(bigShoeRebounds());
